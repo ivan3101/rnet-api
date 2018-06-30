@@ -1,8 +1,9 @@
 const Bluebird = require('bluebird');
 const Mongoose = require('mongoose');
 
-Mongoose.connect('mongodb://localhost/rnet', {
-    promiseLibrary: Bluebird
+// Mongoose.connect('mongodb+srv://rnet:Z6Nc1sf0eMUyCoeL@cluster0-bl6fa.mongodb.net/test?retryWrites=true', {
+Mongoose.connect('mongodb://rnet:Z6Nc1sf0eMUyCoeL@cluster0-shard-00-00-bl6fa.mongodb.net:27017,cluster0-shard-00-01-bl6fa.mongodb.net:27017,cluster0-shard-00-02-bl6fa.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', {
+      promiseLibrary: Bluebird
 }).catch(err => console.log('No se pudo establecer conexión con MongoDB'));
 Mongoose.connection
     .on('connecting', () => console.log('Conectando a la base de datos RNet...'))
